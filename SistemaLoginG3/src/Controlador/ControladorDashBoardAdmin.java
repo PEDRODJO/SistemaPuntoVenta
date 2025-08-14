@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Vista.DashBoardAdmin;
@@ -14,70 +10,73 @@ public class ControladorDashBoardAdmin {
     //Atributos
     private DashBoardAdmin vista;
     
-    private usuario modelo;
-    
-    //Controlador
-
+    //Constructor
     public ControladorDashBoardAdmin() {
-        //Crear el objeto vista
-        this.vista=new DashBoardAdmin();
+        this.vista = new DashBoardAdmin();
         manejadorEventos();
         
+        // Muestra el panel de usuarios por defecto al iniciar.
+        mostrarPanelUsuarios();
     }
-    //Metodo set y get
-
+    
     public DashBoardAdmin getVista() {
         return vista;
     }
 
-    public void setVista(DashBoardAdmin vista) {
-        this.vista = vista;
-    }
-    
-    
-    //Metodo manejador de eventos 
     public void manejadorEventos(){
-        //Agregar evento al oton btnUsuarios
-        this.vista.btnUsuarios.addActionListener(e->mostrarPanelUsuarios());
-        this.vista.btnRolUsuarios.addActionListener(e->mostrarPanelRolUsuarios());
+        // Se añaden las acciones a TODOS los botones del menú
+        this.vista.btnUsuarios.addActionListener(e -> mostrarPanelUsuarios());
+        this.vista.btnRolUsuarios.addActionListener(e -> mostrarPanelRolUsuarios());
+        this.vista.btnProductos.addActionListener(e -> mostrarPanelProductos());
         
+        // ---> ACCIÓN PARA EL NUEVO BOTÓN <---
+        this.vista.btnPuntoVenta.addActionListener(e -> mostrarPanelPuntoVenta());
     }
     
     public void mostrarPanelRolUsuarios(){
-        ControladorPanelRolUsuarios controladorPanelRolUsuarios=new ControladorPanelRolUsuarios();
-        
-        controladorPanelRolUsuarios.getVista().setSize(800,560);
-        controladorPanelRolUsuarios.getVista().setLocation(0, 0);
-        
+        ControladorPanelRolUsuarios controladorHijo = new ControladorPanelRolUsuarios();
         this.vista.panelContenido.removeAll();
-        this.vista.panelContenido.add(controladorPanelRolUsuarios.getVista());
+        this.vista.panelContenido.add(controladorHijo.getVista(), java.awt.BorderLayout.CENTER);
         this.vista.panelContenido.revalidate();
         this.vista.panelContenido.repaint();
-        
     }
     
-    
-    //Metodo para mostrar el panel de usuarios
     public void mostrarPanelUsuarios(){
-        //Crear el objeto del controlador panel usuario
-        ControladorPanelUsuarios controladorPanelUsuarios=new ControladorPanelUsuarios();
-        
-        controladorPanelUsuarios.getVista().setSize(800,560);
-        controladorPanelUsuarios.getVista().setLocation(0, 0);
-        
-        //Agregar eel panelUsuarios al panelControl
+        ControladorPanelUsuarios controladorHijo = new ControladorPanelUsuarios();
         this.vista.panelContenido.removeAll();
-        this.vista.panelContenido.add(controladorPanelUsuarios.getVista());
+        this.vista.panelContenido.add(controladorHijo.getVista(), java.awt.BorderLayout.CENTER);
         this.vista.panelContenido.revalidate();
         this.vista.panelContenido.repaint();
     }
      
-    //Metodo main
+    public void mostrarPanelProductos(){
+        ControladorPanelProducto controladorHijo = new ControladorPanelProducto();
+        this.vista.panelContenido.removeAll();
+        this.vista.panelContenido.add(controladorHijo.getVista(), java.awt.BorderLayout.CENTER);
+        this.vista.panelContenido.revalidate();
+        this.vista.panelContenido.repaint();
+    }
+    
+    // ---> MÉTODO NUEVO PARA MOSTRAR EL PUNTO DE VENTA <---
+    public void mostrarPanelPuntoVenta() {
+        // Creamos el controlador del punto de venta.
+        // Como estamos probando, le pasamos un ID de usuario admin (ej: 1)
+        ControladorDashBoardPuntoVenta controladorPOS = new ControladorDashBoardPuntoVenta(1);
+        
+        // OJO: Como el Punto de Venta es un JFrame (una ventana), no lo añadimos a un panel.
+        // Lo que hacemos es ocultar el dashboard de admin y mostrar la ventana de ventas.
+        this.vista.setVisible(false); // Oculta la ventana de admin
+        controladorPOS.getVista().setVisible(true); // Muestra la ventana de ventas
+        
+        // Para regresar, tendrías que programar el botón de "salir" en la ventana de ventas
+        // para que cierre esa ventana y vuelva a mostrar la de admin.
+    }
+    
+    // ---> MÉTODO MAIN REACTIVADO <---
+    // Te permite ejecutar este archivo con "Run File" para probar el dashboard directamente.
     public static void main(String[] args){
-        ControladorDashBoardAdmin controlador=new ControladorDashBoardAdmin();
+        ControladorDashBoardAdmin controlador = new ControladorDashBoardAdmin();
         controlador.vista.setVisible(true);
         controlador.vista.setLocationRelativeTo(null);
     }
-    
-    
 }

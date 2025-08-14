@@ -33,6 +33,8 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnUsuarios = new javax.swing.JButton();
         btnRolUsuarios = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
+        btnPuntoVenta = new javax.swing.JButton();
         panelEncabezado = new javax.swing.JPanel();
         panelContenido = new javax.swing.JPanel();
 
@@ -75,6 +77,16 @@ public class DashBoardAdmin extends javax.swing.JFrame {
             }
         });
         panelMenu.add(btnRolUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 40));
+
+        btnProductos.setBackground(new java.awt.Color(255, 102, 51));
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Usuario1.png"))); // NOI18N
+        btnProductos.setText("Productos");
+        panelMenu.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 190, 40));
+
+        btnPuntoVenta.setBackground(new java.awt.Color(255, 102, 0));
+        btnPuntoVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Sking.png"))); // NOI18N
+        btnPuntoVenta.setText("Punto de Venta");
+        panelMenu.add(btnPuntoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 190, 40));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
 
@@ -140,6 +152,8 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnProductos;
+    public javax.swing.JButton btnPuntoVenta;
     public javax.swing.JButton btnRolUsuarios;
     public javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;

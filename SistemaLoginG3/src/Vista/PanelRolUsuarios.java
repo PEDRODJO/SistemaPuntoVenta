@@ -65,6 +65,11 @@ public class PanelRolUsuarios extends javax.swing.JPanel {
 
         btnRolBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/BuscarUsuario.png"))); // NOI18N
         btnRolBuscar.setText("Buscar");
+        btnRolBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRolBuscarActionPerformed(evt);
+            }
+        });
 
         btnRolEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/EliminarUsuario.png"))); // NOI18N
         btnRolEliminar.setText("Eliminar");
@@ -178,6 +183,10 @@ public class PanelRolUsuarios extends javax.swing.JPanel {
     private void btnRolNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolNuevoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRolNuevoActionPerformed
+
+    private void btnRolBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRolBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
